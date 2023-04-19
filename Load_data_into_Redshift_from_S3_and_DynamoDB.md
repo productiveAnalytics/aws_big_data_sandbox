@@ -140,8 +140,8 @@ Connect to Redshift clusster using known username and password
 psql -U masteruser -p $PGPORT import-test
 ```
 
-### Create table and import data from S3
-#### On psql console, issue DDL
+### Create table to import data from S3
+#### On psql console, issue DDL for table for S3
 ```
 create table users_import_s3 (ID int, Name varchar, Department varchar, ExpenseCode int);
 ```
@@ -149,11 +149,29 @@ Confirm table
 ```
 \dt
 ```
-#### Load data from S3
+#### Inport data into Redshift from S3
 ```
 COPY users_import_s3  FROM 's3://redshift-import-20230418-2212/redshift-data.csv' IAM_ROLE 'arn:aws:iam::713664742867:role/redshift-import' DELIMITER ',' ;
 ```
-#### Config data loaded in Redshift
+#### Confirm S3 data loaded into corresponding Redshift table
 ```
 SELECT * FROM users_import_s3 LIMIT 10;
+```
+
+### Create table to import data from DynamoDB
+#### On psql console, issue DDL for table for DDB 
+```
+create table users_import_ddb (ID int, Name varchar, Department varchar, ExpenseCode int);
+```
+Confirm table 
+```
+\dt
+```
+#### Inport data into Redshift from DDB
+```
+COPY users_import_ddb  FROM 'dynamodb://redshift-import' IAM_ROLE 'arn:aws:iam::713664742867:role/redshift-import' READRATIO 50 ;
+```
+#### Confirm DDB data loaded into corresponding Redshift table
+```
+SELECT * FROM users_import_ddb LIMIT 10;
 ```
