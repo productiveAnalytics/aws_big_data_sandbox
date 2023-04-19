@@ -61,7 +61,7 @@ Confirm data in DDB table
 aws dynamodb scan --table-name redshift-import
 ```
 
-### Step 3: Create IAM Role
+## Step 3: Create IAM Role
 - In the IAM side menu, click Roles.
 - Click Create role.
 - Scroll down and select EC2 as the service.
@@ -85,6 +85,7 @@ aws dynamodb scan --table-name redshift-import
   Click Update Trust Policy.
   
 #### Confirm the Role
+Note the ARN of the role: "redshift-import"
 ```
 aws iam get-role --role-name redshift-import
 ```
@@ -120,3 +121,39 @@ aws iam get-role --role-name redshift-import
     }
 }
 `
+## Step 4: Load data to Redshift
+
+### Get Redshift cluster into
+```
+aws redshift describe-clusters | head -25
+```
+e.g.
+`
+`
+Note the Edpoint address and port and export as PGHOST and PGPORT
+```
+export PGHOST="redshiftcluster-mwtzbkky9dld.cd30wmfwyvzc.us-east-1.redshift.amazonaws.com"
+export PGPORT=5439
+```
+Connect to Redshift clusster using known username and password
+```
+psql -U masteruser -p $PGPORT import-test
+```
+
+### Create table and import data from S3
+#### On psql console, issue DDL
+```
+create table users_import_s3 (ID int, Name varchar, Department varchar, ExpenseCode int);
+```
+Confirm table 
+```
+\dt
+```
+#### Load data from S3
+```
+COPY users_import_s3  FROM 's3://redshift-import-20230418-2212/redshift-data.csv' IAM_ROLE 'arn:aws:iam::713664742867:role/redshift-import' DELIMITER ',' ;
+```
+#### Config data loaded in Redshift
+```
+SELECT * FROM users_import_s3 LIMIT 10;
+```
