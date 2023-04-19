@@ -61,7 +61,8 @@ Confirm data in DDB table
 aws dynamodb scan --table-name redshift-import
 ```
 
-## Step 3: Create IAM Role
+## Step 3: IAM Role for Redshift to read from S3 and DynanoDB
+### Create IAM Role
 - In the IAM side menu, click Roles.
 - Click Create role.
 - Scroll down and select EC2 as the service.
@@ -121,6 +122,9 @@ aws iam get-role --role-name redshift-import
     }
 }
 `
+### Asign the IAM Role to Redshift Cluster
+Update Redshift cluster and attach role "redshift-import"
+
 ## Step 4: Load data to Redshift
 
 ### Get Redshift cluster into
