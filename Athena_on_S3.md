@@ -1,9 +1,9 @@
 # Query using Athena from parquet files on S3
 
 ## Step 1: Configure query result location
-Point to S3 to save the query results
+Point to S3 to save the Athena query results
 
-## Step 2: Create HIVE compatible Data Catalog
+## Step 2: Create database and table from S3 bucket data
 Create AWS Glue Database and Table along with HIVE compatible partitions (e.g. year=YYYY/month=MM/day=DD)
 ```
 CREATE EXTERNAL TABLE IF NOT EXISTS `aws_service_logs`.`cf_access_optimized` (
@@ -31,6 +31,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `aws_service_logs`.`cf_access_optimized` (
   `responseresulttype` string,
   `httpversion` string
 )
+COMMENT "Table generated from CloudFront log stored as Parquet files on S3"
 PARTITIONED BY (
   `year` string COMMENT 'YYYY',
   `month` string COMMENT 'MM',
@@ -42,7 +43,8 @@ LOCATION 's3://cfst-2680-697c7e0b037723458f6ce5792c51c6-s3bucket-elskllmk80wd/'
 TBLPROPERTIES ('classification' = 'parquet');
 ```
 
-## Step 3: Add partition data
+## Step 3: Add partition metadata
+This is important step otherwise the _count(*)_ would be zero
 ```
 MSCK REPAIR TABLE aws_service_logs.cf_access_optimized
 ```
