@@ -1,5 +1,7 @@
 # Setup S3 access across the AWS account
 
+Note: Bucket Policy (resource policy) always takes precedence over the IAM policy (Idenity policy)
+
 ## Situation 1
 If the S3 in Owner AWS account has "bucket policy" that explicitly ALLOW the user from other account (using ARN), then the user can access the S3
 
