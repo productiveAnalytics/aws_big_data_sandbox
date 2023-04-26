@@ -1,6 +1,8 @@
 # Setup S3 access across the AWS account
 
-Note: Bucket Policy (resource policy) always takes precedence over the IAM policy (Idenity policy)
+**Note**: 
+- Bucket Policy (resource policy) always takes precedence over the IAM policy (Idenity policy)
+- The Access Keys are often rotated by AWS while using IAM Role, while if the keys are leaked, the Bucket Policy can be compromised.
 
 ## Situation 1
 If the S3 in Owner AWS account has "bucket policy" that explicitly ALLOW the user from other account (using ARN), then the user can access the S3
