@@ -7,4 +7,4 @@ AWS Big Data an Cloud Solution Architecture
 3. [Load data into Redshift from S3 and DynamoDB](Load_data_into_Redshift_from_S3_and_DynamoDB.md)
 4. [VPC Peering - Terraform](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/lab_network_vpc_peering/README.md)
 5. [Cross Account S3 access (with or without bucket policy)](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/Cross-account_S3_access.md)
-6. [Conditional public access to S3 objects](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/CloudFront_or_Selective_Public_access_to_S3_objects.md)
+6. [Conditional public access to S3 objects (via bucket policy)](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/CloudFront_or_Selective_Public_access_to_S3_objects.md)
