@@ -8,3 +8,4 @@ AWS Big Data an Cloud Solution Architecture
 4. [VPC Peering - Terraform](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/lab_network_vpc_peering/README.md)
 5. [Cross Account S3 access (with or without bucket policy)](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/Cross-account_S3_access.md)
 6. [Conditional public access to S3 objects (via bucket policy)](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/CloudFront_or_Selective_Public_access_to_S3_objects.md)
+7. [API Gateway as REST API proxy to Kinesis Data Steams (KDS)](https://github.com/productiveAnalytics/aws_big_data_sandbox/blob/main/API_Gateway_as_proxy_to_Kinesis_Data_Streams.md)
