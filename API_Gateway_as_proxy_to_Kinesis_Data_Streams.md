@@ -84,3 +84,7 @@ aws kinesis list-streams
 3. Click the Test button.
 4. Make sure that you receive a Status: 200 result. 
    - In the logs, you should be able to see names of KDS like myStream and yourStream listed next to Streams.
+5. Check the response
+```json
+{"HasMoreStreams":false,"StreamNames":["myDataStream","yourDataStream"],"StreamSummaries":[{"StreamARN":"arn:aws:kinesis:us-east-1:218137335374:stream/myDataStream","StreamCreationTimestamp":1.684013726E9,"StreamModeDetails":{"StreamMode":"ON_DEMAND"},"StreamName":"myDataStream","StreamStatus":"ACTIVE"},{"StreamARN":"arn:aws:kinesis:us-east-1:218137335374:stream/yourDataStream","StreamCreationTimestamp":1.684013748E9,"StreamModeDetails":{"StreamMode":"PROVISIONED"},"StreamName":"yourDataStream","StreamStatus":"ACTIVE"}]}
+```
