@@ -41,6 +41,6 @@ Let "cloud_user" assume the role
 {
     "UserId": "AROARRK3MKAL4SCEY44KV:cloud_user",
     "Account": "105955217431",
-    "Arn": "arn:aws:sts::105955217431:assumed-role/Demo/cloud_user"
+    "Arn": "arn:aws:sts::105955217431:assumed-role/TrustPolicy_Demo/cloud_user"
 }
 ```
